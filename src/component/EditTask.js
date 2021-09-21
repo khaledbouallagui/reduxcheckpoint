@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Modal from "react-modal";
+import { useDispatch } from "react-redux";
+import { edittask } from "../Redux/action/Action";
 const EditTask = ({todo}) => {
-    const dispatch = useDispatch()
-const [edittext,setedittext,]useState(todo.name)
+const dispatch = useDispatch()
+const [edittext,setedittext,]= useState(todo.task)
   const customStyles = {
     content: {
       top: "50%",
@@ -33,19 +35,14 @@ const edit= ()=>{
 }
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
+      <button onClick={openModal}>Edit</button>
       <Modal
         isOpen={modalIsOpen}
         
         onRequestClose={closeModal}
         style={customStyles}
-       
-      >
-        
-   
-       
-        
-          <input onChange ={(e)=>setedittext(e.target.value)}type="text"value={edittext/>
+       >
+          <input onChange ={(e)=>setedittext(e.target.value)}type="text" value={edittext}/>
           <button onClick={closeModal}>Cancel</button>
           <button onClick={edit}>Edit</button>
         

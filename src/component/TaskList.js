@@ -1,11 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import TaskItem from './TaskItem';
 const TaskList = () => {
-    const TaskList = useSelector(state.TaskReducer.TaskList)
+  const taskList= useSelector(state => state.taskReducer.taskList);
+   
   return (
     <div>
       {
-TaskList.map((el)=><TaskItem todo={el}/>
+taskList.map((el)=><TaskItem todo={el}/>
 )
       }
     </div>

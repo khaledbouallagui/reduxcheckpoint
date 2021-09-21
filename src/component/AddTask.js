@@ -1,13 +1,13 @@
 import React,{useState} from 'react'
 import { useDispatch } from 'react-redux'
-import {addTask} from '../Redux/action/Action'
+import {addTask} from '../Redux/action/Action';
 
 const AddTask = () => {
-const [text,settext]=usesState("")
+const [text,setText]=useState("")
 const dispatch = useDispatch()
 const add =()=>{
   if (text) {
-    dispatch (addTask({id:Math.random,name:text.trim(),isDone:false}))
+    dispatch (addTask({id:Math.random,task:text.trim(),isDone:false}))
     setText("")
   }
   else
@@ -16,11 +16,11 @@ const add =()=>{
   }}
   return (
     <div>
-      <input onChange{(e)=>setText(e.target.value)}type="text"value={text} />
-      <button onlick={add}> Add Task </button>
+    <input type="text" value={text} onChange={(e)=>setText(e.target.value)}/>
+       <button onClick={add}> Add Task </button>
       
 
     </div>
-  )
+  )}
 
-export default AddTask;
+export default AddTask

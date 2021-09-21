@@ -22,30 +22,30 @@ const Intialstate = {
   ],
 };
 
-export const TaskReducer = (state = Intialstate, { type, payload }) => {
+const taskReducer = (state = Intialstate, { type, payload }) => {
   switch (type) {
     case ADD_TASK :
-      return { ...state, tasklist: [...state.tasklist, payload] };
+      return { ...state, taskList: [...state.taskList,payload] };
 
     case DELETE_TASK:
       return {
         ...state,
-        tasklist: state.tasklist.filter((task) => task.id !== payload),
+        taskList: state.taskList.filter((el) => el.id !== payload)
       };
 
     case COMPLETE_TASK:
       return {
-        ...state,
-        tasklist: state.tasklist.map((task) =>
-          task.id === payload ? { ...task, isDone: !task.isDone } : task
-        ),
+       ...state,
+       taskList:state.taskList.map(
+         (el)=>el.id===payload ? {...el,isDone:!el.isDone}:el
+       ),
       };
 
     case EDIT_TASK:
       return {
         ...state,
-        tasklist: state.tasklist.map((task) =>
-          task.id === payload ? { ...task, name: !payload.value } : task
+        taskList: state.taskList.map((el) =>
+          el.id === payload.id ? {...el,task:payload.value } : el
         ),
       };
 
@@ -53,4 +53,4 @@ export const TaskReducer = (state = Intialstate, { type, payload }) => {
       return state;
   }
 };
-export default TaskReducer;
+export default taskReducer
